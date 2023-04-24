@@ -16,5 +16,5 @@ if config.redis.host and config.redis.port:
     storage = RedisStorage2(config.redis.host, config.redis.port, db=config.redis.db)
 else:
     storage = MemoryStorage()
-bot = Bot(token=config.bot.token, parse_mode=types.ParseMode.HTML)
+bot = Bot(token=config.bot.token)
 dp = Dispatcher(bot=bot, storage=storage)
