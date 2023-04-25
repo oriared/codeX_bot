@@ -8,8 +8,8 @@ async def set_default_commands(dp: Dispatcher) -> None:
         [
             types.BotCommand('start', 'Запустить бота'),
             types.BotCommand('help', 'Справка'),
-            types.BotCommand('cancel', 'Отмена операции'),
-            types.BotCommand('settings', 'Настройки'),
+            types.BotCommand('r', 'Перезапуск интерпретатора'),
+            types.BotCommand('e', 'Отправка интерпретатору пустой строки'),
         ],
         scope=types.BotCommandScopeAllPrivateChats(),
     )

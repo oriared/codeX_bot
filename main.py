@@ -12,10 +12,9 @@ logger = logging.getLogger(__name__)
 async def on_startup():
     logger.info('Setting up middlewares...')
     dp.setup_middleware(LoggingMiddleware())
-
+    await bot.get_session()
     logger.info('Setting default commands...')
     await set_default_commands(dp)
-
     await notify_admin(dp, config.bot.admin)
     await dp.skip_updates()
     await dp.start_polling()

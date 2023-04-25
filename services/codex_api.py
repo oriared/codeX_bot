@@ -1,11 +1,14 @@
-from typing import Optional
-import requests
+from aiohttp import ClientSession
+
+from loader import bot
+
 
 url = 'https://api.codex.jaagrav.in'
 
-def execute_code(language: str, code: str, inp: str) -> tuple[str, str]:
-    data: dict = dict(language=language, code=code, input=inp)
-    response = requests.post(url, data).json()
-    print(response)
-    print()
-    return response['output'], response['error']
+
+async def execute_code(code: str, inp: str) -> tuple[str, str]:
+    data: dict = dict(language='py', code=code, input=inp)
+    session: ClientSession = await bot.get_session()
+    async with session.post(url, json=data) as resp:
+        resp: dict = await resp.json()
+        return resp['output'], resp['error']
