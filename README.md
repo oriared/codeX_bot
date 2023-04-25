@@ -1,3 +1,2 @@
-# Aiogram bot template
-This is simple aiogram's telegram bot template.
-Feel free to share.
+# Telegram bot - interactive Python interpreter
+This telegram bot works with API https://codex.jaagrav.in/ (https://github.com/Jaagrav/CodeX-API)
