@@ -4,7 +4,7 @@ from aiogram.dispatcher import FSMContext
 
 
 from loader import dp
-from states.states import FSMInterpretator
+from states.states import FSMInterpreter
 from utils.lexicon import instructions
 
 
@@ -12,7 +12,7 @@ start_text = ('Приветствую.\nЭто бот-интерпретатор
               'Работает через API сайта https://codex.jaagrav.in/\n')
 
 
-@dp.message_handler(CommandStart(), state=FSMInterpretator.all_states)
+@dp.message_handler(CommandStart(), state=FSMInterpreter.all_states)
 async def cmd_start(message: types.Message, state: FSMContext):
-    await FSMInterpretator.reset_state(state)
+    await FSMInterpreter.reset_state(state)
     await message.answer(text=start_text + instructions)

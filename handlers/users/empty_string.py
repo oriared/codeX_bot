@@ -1,12 +1,12 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 
-from services.interpretator import execute_current_code
-from states.states import FSMInterpretator
+from services.interpreter import execute_current_code
+from states.states import FSMInterpreter
 from loader import dp
 
 
-@dp.message_handler(state=FSMInterpretator.all_states, commands=('e'))
+@dp.message_handler(state=FSMInterpreter.all_states, commands=('e'))
 async def empty_string(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['current_code'] += '\n'

@@ -2,7 +2,7 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 
-from states.states import FSMInterpretator
+from states.states import FSMInterpreter
 from loader import dp
 
 
@@ -11,7 +11,7 @@ from loader import dp
                                      'else:', 'try:', 'except ', 'except:',
                                      'class ', 'def ', 'with '
                                     )),
-                    state=FSMInterpretator.code)
+                    state=FSMInterpreter.code)
 async def code_block(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['current_code'] += message.text.lstrip('$') + '\n'

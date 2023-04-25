@@ -1,7 +1,7 @@
 from aiogram.dispatcher.filters.state import State, StatesGroup
 
 
-class FSMInterpretator(StatesGroup):
+class FSMInterpreter(StatesGroup):
     code = State()
     fill_input = State()
 
@@ -16,4 +16,4 @@ class FSMInterpretator(StatesGroup):
             data['output_lenght'] = 0
             data['answer_to_user'] = ''
 
-            await FSMInterpretator.code.set()
+            await FSMInterpreter.code.set()
