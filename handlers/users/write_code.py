@@ -9,8 +9,10 @@ from states.states import FSMInterpreter
 @dp.message_handler(state=FSMInterpreter.code)
 async def write_code(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
+        
         data['current_code'] += message.text.lstrip('$') + '\n'
         inp: int = data['current_code'].count('input(')
+        
         if inp:
             data['number_of_current_inputs'] = inp
             await FSMInterpreter.fill_input.set()

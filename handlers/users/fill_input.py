@@ -11,6 +11,7 @@ async def fill_input(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['current_inputs'] += message.text.lstrip('$') + '\n'
         data['number_of_current_inputs'] -= 1
+        
         if data['number_of_current_inputs'] > 0:
             await message.answer(text='#### ВВЕДИТЕ СЛЕДУЮЩИЙ INPUT ####')
         else:
